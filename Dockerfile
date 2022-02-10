@@ -1,5 +1,10 @@
 FROM phasecorex/user-python:3.9-slim as noaudio-build
 
+RUN apt update \
+  && apt install build-essential libffi-dev -y \
+  && pip install poetry \
+  && apt remove build-essential libffi-dev -y
+
 RUN set -eux; \
 # Install Red-DiscordBot dependencies
     apt-get update; \
